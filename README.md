@@ -1,6 +1,7 @@
 # Escrow Smart Contract 
 
-![pexels-mikhail-nilov-7731327](https://github.com/J-rayX/escrow-smart-contract/assets/28672755/6afb1f8b-7cb5-46bf-9394-1f1fce9310e8)
+![Photo by Mikhail Nilov from Pexels: https://www.pexels.com/photo/people-having-a-meeting-7731327/](https://github.com/J-rayX/escrow-smart-contract/assets/28672755/a2c9820f-25bf-4581-bbaf-5109e57d0545)
+
 
 According to [Wikipedia](https://en.wikipedia.org/wiki/Escrow), Escrow is a contractual agreement between two transacting parties whereby a third party holds the funds and makes the disbursement based on certain agreed conditions. An example is a trust account holding funds in a person's name to pay taxes or insurance fees.
 
