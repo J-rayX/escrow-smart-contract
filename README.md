@@ -1,5 +1,7 @@
 # Escrow Smart Contract 
 
+![pexels-mikhail-nilov-7731327](https://github.com/J-rayX/escrow-smart-contract/assets/28672755/6afb1f8b-7cb5-46bf-9394-1f1fce9310e8)
+
 According to [Wikipedia](https://en.wikipedia.org/wiki/Escrow), Escrow is a contractual agreement between two transacting parties whereby a third party holds the funds and makes the disbursement based on certain agreed conditions. An example is a trust account holding funds in a person's name to pay taxes or insurance fees.
 
 It is the bread and butter of Ethereum smart contracts. When a depositor initiates an escrow transaction, the value (Ether) is held in the escrow contract until the beneficiary has fulfilled an agreed task.
