@@ -15,7 +15,7 @@ contract Escrow{...}
 
 ### State Variables
 
-Variables hold values that are persistently stored in the blockchain (the Ethereum ledger here). The smart contract in this code defines a `depositor` of value, a `beneficiary` of transfered value and an `arbiter` who alone can approve a transfer transaction. Therefore, they are defined early enough in the contract.
+Variables hold values that are persistently stored in the blockchain (the Ethereum ledger here). The smart contract in this code defines a `depositor` of value, a `beneficiary` of transferred value and an `arbiter` who alone can approve a transfer transaction. Therefore, they are defined early enough in the contract.
 
 ```sol
 Contract Escrow {
@@ -30,7 +30,7 @@ Contract Escrow {
 
 ### Constructor and State Variables Initialization
 
-Here, the state variables are initialized in the contructor of the contract. This is similar to how classes are defined in some object-oriented languages like C#.
+Here, the state variables are initialized in the constructor of the contract. This is similar to how classes are defined in some object-oriented languages like C#.
 
 ```sol
 contract Escrow {
@@ -45,13 +45,13 @@ contract Escrow {
 
 In the above code, the depositor deploys the contract and, the `msg.sender` address assumes the position of the depositor in our escrow contract. The `msg.sender` is a globally available identifier for the externally owned account (EOA) or another smart contract calling our escrow smart contract. Read more about the use of `msg.sender` in this [metaschool.so](https://metaschool.so/articles/solidity-basics-msg-sender/) answer by Munim Iftikhar.
 
-The depositor being the deployer of the contract obtains the addresses of the arbiter and beneficiary and store the addresses as arguments to our contract for storage as state variables.
+The depositor being the deployer of the contract obtains the addresses of the arbiter and beneficiary and stores the addresses as arguments to our contract for storage as state variables.
 
-It's noteworthy to point out that the `payable` keyword in the constructor code above identifies the contract as being able to pay the beneficiary after the arbiter approves the value transfer. The `payable` keyword is used in Solidity to signify the ability to accept ether. Ether is the denomination of payement for EVM computation.
+It's noteworthy to point out that the `payable` keyword in the constructor code above identifies the contract as being able to pay the beneficiary after the arbiter approves the value transfer. The `payable` keyword is used in Solidity to signify the ability to accept ether. Ether is the denomination of payment for EVM computation.
 
 ### Arbiter and Transfer Approval
 
-In the following code, we will write the logic to transfer the value in the escrow balance to the beneficiary whose address we saved in the state storage. This is how the arbiter will be able to approve the transfer of deposit to the beneficiary. Let's create a function `approve()` for the process:
+In the following code, we will write the logic to transfer the value in the escrow balance to the beneficiary whose address we saved in the state storage. This is how the arbiter will be able to approve the transfer of the deposit to the beneficiary. Let's create a function `approve()` for the process:
 
 ```sol
 ...
@@ -64,7 +64,7 @@ function approve() external {
 ```
 
 - the `external` keyword in the function definition indicates that the `approve()` function can only be used outside of the contract by other contracts.
-- `address(this).balance` allows us to access the constructor's balance with it's address using the `this` keyboard. This is the value in the escrow. In some languages like JavaScript, [this](https://en.wikipedia.org/wiki/This_(computer_programming)) keyword helps to access variables defined within a specified scope of usage.
+- `address(this).balance` allows us to access the constructor's balance with its address using the `this` keyboard. This is the value in the escrow. In some languages like JavaScript, [this](https://en.wikipedia.org/wiki/This_(computer_programming)) keyword helps to access variables defined within a specified scope of usage.
 
 - we made a **[message call]()** to beneficiary transfering the escrow balance to the beneficiary
 
@@ -72,7 +72,7 @@ function approve() external {
 
 ### Arbiter Authorization
 
-We need to allow only the arbiter to approve deposit transfer. Therefore, we will create an Error to be returned once the arbiter is not the approver.
+We need to allow only the arbiter to approve the deposit transfer. Therefore, we will create an Error to be returned once the arbiter is not the approver.
 
 ```sol
 ...
@@ -94,7 +94,7 @@ In the code above:
 
 ### Emitting Events
 
-Events are a way to emit data for front-end systems and servers consuming or working with our contract. They can listen on events and get up-to-date information for their users and processes alike. Let us add an event, `Approved(uint)` which we will use to emit the escrow `balance` that the arbiter transfers to the beneficiary.
+Events are a way to emit data for front-end systems and servers consuming or working with our contract. They can listen to events and get up-to-date information for their users and processes alike. Let us add an event, `Approved(uint)` which we will use to emit the escrow `balance` that the arbiter transfers to the beneficiary.
 
 ```sol
 ...
