@@ -2,22 +2,28 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
-import "../Escrow.sol";
+import "../src/Escrow.sol";
 
 contract EscrowTest is Test {
     Escrow public escrow;
     address arbiter = address(2);
     address depositor = address(3);
-    address beneficiary = address(4);
+    address payable beneficiary = payable(address(4));
 
     function setUp() public {
-        vm.prank(depositor);
-        escrow = new Escrow(arbiter, beneficiary);
+        hoax(depositor);
+        escrow = new Escrow{value: 1 ether}(arbiter, beneficiary);
     }
 
-    function testAddresses() public {
-        assertEq(escrow.arbiter(), arbiter);
-        assertEq(escrow.depositor(), depositor);
-        assertEq(escrow.beneficiary(), beneficiary);
+    function testApprovalEvent() public {
+        vm.prank(arbiter);
+        vm.recordLogs();
+
+        escrow.approve();
+
+        Vm.Log[] memory entries = vm.getRecordedLogs();
+        assertEq(entries.length, 1);
+        assertEq(entries[0].topics[0], keccak256("Approved(uint256)"));
+        assertEq(abi.decode(entries[0].data, (uint)), 1 ether);
     }
 }
