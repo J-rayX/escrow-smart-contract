@@ -11,4 +11,9 @@ contract Escrow {
         beneficiary = _beneficiary;
         depositor = msg.sender;
     }
+
+    function approve() external payable {
+        (bool success, ) = beneficiary.call{value: address(this).balance}("");
+        require(success);
+    }
 }
